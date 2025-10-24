@@ -39,7 +39,4 @@ Content-Type: application/json
 
 
 
-
-
-
 # {"_id":{"$oid":"68d4b990d16e6d1aed5860bc"},"nombres":"Rafael","apellidos":"Pombo","nacionalidad":"Colombia"}

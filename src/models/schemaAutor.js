@@ -23,7 +23,7 @@ const autorSchema = new Schema(
   },
   {
     timestamps: true, // añade createdAt y updatedAt automáticamente
-    collection: "autor",
+    collection: "Autor",
   }
 );
 

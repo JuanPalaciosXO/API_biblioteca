@@ -1,14 +1,14 @@
 import express from "express";
-import ctrlLibro from "../services/ctrlLibro";
+import autorCrtl from "../services/crtlAutores.js";
 
 const router = express.Router();
 
-router.post("/autores", agregarAutor);
+router.post("/autores", autorCrtl.agregarAutor);
 
-router.get("/autores", consultarAutores);
+router.get("/autores", autorCrtl.consultarAutores);
 
-router.put("/autores/:id", actualizarAutor);
+router.put("/autores/:id", autorCrtl.actualizarAutor);
 
-router.delete("/autores/:id", eliminarAutor);
+router.delete("/autores/:id", autorCrtl.eliminarAutor);
 
 export default router;

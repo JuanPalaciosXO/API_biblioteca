@@ -1,4 +1,4 @@
-import Libro from "../models/schemaLibro.js";
+import Autor from "../models/schemaAutor.js";
 import AutorModel from "../models/schemaAutor.js";
 
 //Función para agregar autores 
@@ -17,7 +17,7 @@ const agregarAutor = async (req, res) =>{
 const consultarAutores = async (req, res) =>{
     try{
         const librosBdb = await Autor.find();
-        console.error(`esto retorno la busqueda de los autores ::: ${librosBdD}`);
+        console.error(`esto retorno la busqueda de los autores ::: ${librosBdb}`);
         res.json(librosBdb);
 
     }catch (error){
@@ -33,7 +33,7 @@ const consultarAutores = async (req, res) =>{
 const eliminarAutor = async (req, res) =>{
     try{
         const {id} =  req.params;
-        const autorBorrado = await Autor.findByAndDelete(id);
+        const autorBorrado = await Autor.deleteOne({_id: id });
         if (!autorBorrado) {
             return res.status(500).json({message: "Autor no encontrado"})
         }
@@ -49,7 +49,7 @@ const actualizarAutor = async (req, res) =>{
     try{
         const {id} = req.params;
         const {nombres, apellidos, nacionalidad} = req.body;
-        const autorActualizado = await Autor.findByAndUpdate(id,
+        const autorActualizado = await Autor.updateOne({_id: id},
             {nombres, apellidos, nacionalidad},
             {new: true}
     );
@@ -68,5 +68,5 @@ export default{
     agregarAutor,
     consultarAutores,
     eliminarAutor,
-    actualizarAutor
+    actualizarAutor,
 }

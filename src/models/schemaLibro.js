@@ -23,7 +23,7 @@ const libroSchema = new Schema(
   },
   {
     timestamps: true, // crea createdAt y updatedAt automáticamente
-    collection: "libro",
+    collection: "Libro",
   }
 );
 
