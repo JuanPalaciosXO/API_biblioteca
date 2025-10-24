@@ -1,0 +1,5 @@
+
+# CORREO = helberthr.rojas@gmail.com / TOmo@3117
+
+USUARIOEFECTO = 'helberrojas@uninpahu.edu.co'
+CLAVEEFECTO = '2-a@p%&-2025'
