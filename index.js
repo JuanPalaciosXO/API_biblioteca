@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import connectDB from "./src/db.js";
 import booksRouter from "./src/routes/bookRouter.js";
+import authorRouter from "./src/routes/authorRouter.js";
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -9,7 +10,7 @@ const port = process.env.PORT || 9000;
 //** MIDDLEWARE */
 app.use(express.json()); // Util para la conversiones de y a JSON
 app.use("/api/v1", booksRouter); // Cuando se use un endpoint de libros se debe anteponer el segmento /api/v1
-
+app.use("/api/v1", authorRouter)
 //** CONECTARSE A LA BdD */
 connectDB();
 

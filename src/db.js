@@ -1,16 +1,15 @@
 // db.js
 import mongoose from "mongoose";
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log(
-      `Conectado a la BdD : ${mongoose.connection.name} en MongoDB Atlas`
-    );
-  } catch (error) {
-    console.error("Error al conectar a MongoDB:", error.message);
-    process.exit(1); // Detiene la app si no se conecta
-  }
+const conectarDB = async () => {
+try{
+mongoose.connect("mongodb://localhost:27017/biblioteca", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+        console.log("Conexcion exitosa");
+    } catch(error) {
+        console.error("conexcion fallida");
+    }
 };
-
-export default connectDB;
+export default conectarDB;
