@@ -1,0 +1,5 @@
+
+# Conexion cambiada a mongo compass
+Se añadieron servicios y rutas de autor
+se añadieron validaciones de libro y autor 
+se añadió request para autor "requestA"

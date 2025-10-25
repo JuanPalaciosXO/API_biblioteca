@@ -1,9 +1,14 @@
 import Libro from "../models/schemaLibro.js";
-import AutorModel from "../models/schemaAutor.js";
+import { libroSchema, libroUpdateSchema } from "../validations/libroValidation.js";
 
 //Funcion para Agregar libros a la biblioteca
 const agregarLibro = async (req, res) => {
   try {
+    const { error } = libroSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+
     const { titulo, idAutor, anioPublicacion } = req.body;
     const nuevoLibro = new Libro({ titulo, idAutor, anioPublicacion });
     await nuevoLibro.save();
@@ -61,6 +66,11 @@ const eliminarLibro = async (req, res) => {
 
 const actualizarLibro = async (req, res) => {
   try {
+    const { error } = libroUpdateSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    
     const { id } = req.params;
     const data = req.body;
     const cantAct = await Libro.updateOne({ _id: id }, { $set: data });

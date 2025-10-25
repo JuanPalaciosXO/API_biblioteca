@@ -1,9 +1,13 @@
 import Autor from "../models/schemaAutor.js";
-import AutorModel from "../models/schemaAutor.js";
+import { autorSchema } from "../validations/autorValidations.js";
 
 //Función para agregar autores 
 const agregarAutor = async (req, res) =>{
     try{
+      const { error } = autorSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
         const {nombres, apellidos, nacionalidad} = req.body;
         const nuevoAutor = new Autor({nombres,  apellidos, nacionalidad});
         await nuevoAutor.save();
@@ -47,6 +51,10 @@ const eliminarAutor = async (req, res) =>{
 //Funcion para actualizar autores
 const actualizarAutor = async (req, res) =>{
     try{
+    const { error } = autorSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
         const {id} = req.params;
         const {nombres, apellidos, nacionalidad} = req.body;
         const autorActualizado = await Autor.updateOne({_id: id},
