@@ -3,3 +3,4 @@
 Se añadieron servicios y rutas de autor
 se añadieron validaciones de libro y autor 
 se añadió request para autor "requestA"
+Correcion esquemas de entidad libros, funcionamiento correcto de endpoints

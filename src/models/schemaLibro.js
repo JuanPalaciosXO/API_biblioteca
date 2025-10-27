@@ -11,10 +11,15 @@ const libroSchema = new Schema(
       required: true,
       trim: true,
     },
-    idAutor: {
-      type: Schema.Types.ObjectId, // Referencia a otro documento
-      ref: "Autor",
+    autor: {
+      type: String,
       required: true,
+      trim: true,
+    },
+    genero: {
+      type: String,
+      required: true,
+      trim: true,
     },
     anioPublicacion: {
       type: Number,
